@@ -23,7 +23,7 @@ weatherForm.addEventListener("submit", (e) => {
       } else {
         console.log(data);
         if (data.code == 105) {
-          message_1.textContent = location;
+          message_1.textContent = "Weather forcase for: "+location;
           message_2.textContent = data.info;
           //   alert(data.info);
         }
