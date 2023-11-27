@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>WeW</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/x-icon" href="../../public/img/favicon.png">
+
+<style>
+body {font-family: "Lato", sans-serif}
+</style>
+<style>
+.container {
+  position: relative;
+  max-height: 100px;
+}
+
+.black-box {
+  position: relative;
+  z-index: -9;
+  border: 2px solid black;
+  height: 100px;
+  margin: 30px;
+    background: rgb(167, 30, 30);
+
+}
+
+{{!-- .gray-box {
+  position: absolute;
+  z-index: -3; /* gray box will be above both green and black box */
+  {{!-- background: lightgray; --}}
+  height: 60px;  
+  width: 100%;
+  left: 50px;
+  top: 50px;
+} --}}
+
+.green-box {
+  position: absolute;
+  z-index: 2; /* green box will be above black box */
+  background: lightgreen;
+  width: 35%;
+  left: 270px;
+  top: -15px;
+  height: 100px;
+}
+.button {
+  background-color: #f3f718; /* Green */
+  border: none;
+  color: rgb(3, 3, 3);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 15px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  border-radius: 4px;
+}
+.button2:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.box-shadow {
+      font-family: cursive, sans-serif;
+      background-color: #2ecc71;
+      color: white;
+      padding: 10px;
+      border-radius: 4px;
+      box-shadow: 2px 2px 40px 2px #504f4f;
+      width: 50%;
+    }
+
+    .custom-flex-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+</style>
+</head>
+<body>
+
+
+{{>header}}
+
+<div class="container">
+  <div class="black-box">
+    {{!-- Black box (z-index: 1) --}}
+      <!-- Automatic Slideshow Images -->
+  <div class="mySlides w3-display-container w3-center" >
+    <img src="https://wallpaperaccess.com/full/701802.jpg" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+      <h3>{{city1}}</h3>
+      <p><b>We had the best time playing at Venice Beach!</b></p>   
+    </div>
+  </div>
+  <div class="mySlides w3-display-container w3-center">
+    <img src="https://wallpaperaccess.com/full/2830382.jpg" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+      <h3>Ne</h3>
+      <p><b>The atmosphere in New York is lorem ipsum.</b></p>    
+    </div>
+  </div>
+  <div class="mySlides w3-display-container w3-center">
+    <img src="https://wallpapercave.com/wp/wp8986866.jpg" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+      <h3>{{city2}}</h3>
+      <p><b>Thank you, Chicago - A night we won't forget.</b></p>    
+    </div>
+  </div>
+    </div>
+  <div class="custom-flex-container">
+    {{!-- Gray box (z-index: 3) --}}
+    <form class="w3-panel w3-blue w3-card-4 w3-center " style="   width: 50%;text-align: center;margin: auto;margin-top: 250px;" >
+ <p> <h2>Rounded Input</h2>
+  Use any of the w3-round classes to create rounded borders.
+
+  <label>Last Name</label>
+  <input class="w3-input w3-border w3-round-large" name="city" type="text" placeholder="Enter City Name">
+<button  class="button button2">Search</button>
+</p>
+</form>
+
+<div class="w3-panel w3-blue w3-card-4 w3-center box-shadow ">
+<p id="message-1" >Waiting for Input</p>
+<p id="message-2"></p>
+</div>
+  </div>
+  {{!-- <div class="green-box">Green box (z-index: 2)</div> --}}
+</div>
+<!-- Page content -->
+
+
+
+
+
+
+
+
+{{>footer}}
+
+<script>
+// Automatic Slideshow - change image every 4 seconds
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, 3000);    
+}
+
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+
+// When the user clicks anywhere outside of the modal, close it
+var modal = document.getElementById('ticketModal');
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+  <script src="/js/myweather.js"></script>
+
+</body>
+</html>
